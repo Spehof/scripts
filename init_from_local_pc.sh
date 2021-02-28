@@ -74,6 +74,8 @@ sudo snap install intellij-idea-ultimate --classic
 ##      Vault - хранилище секретов (лог пас токенов и тд) для приложений поддерживающее провайдеры секретов обласные
 sudo apt-get install -y rg
 
+sudo apt-get install -y xclip
+
 sudo apt-get install -y rename
 
 sudo apt-get install -y jpegoptim
@@ -131,6 +133,17 @@ sudo apt-get install -y sublime-text
 
 # Htop
 sudo apt-get install -y htop
+
+## sudo apt-get install -y monkeysphere
+
+## Ansible
+sudo apt-add-repository --yes --update ppa:ansible/ansible
+sudo apt install -y ansible
+
+sudo apt-get install -y yamllint
+
+## Slack
+sudo snap install slack --classic
 
 # Cleanup the cache (TODO: set up a cron to do this)
 apt clean
