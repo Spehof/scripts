@@ -10,6 +10,7 @@ DAY_OF_WEEK=$(date +"%u")
 # 1-4
 WEEK_OF_MONTH=$((($(date +%-d)-1)/7+1))
 PREV_WEEK_OF_MONTH=$(((($(date +%-d)-1)/7+1)-1))
+MONTH_OLD_FOR_DEL=$MNOW
 
 CURRENT_WEEK_DIR=${BACKUP_HOME}/${MNOW}-${WEEK_OF_MONTH}_WEEK
 
@@ -22,6 +23,7 @@ if [ $PREV_WEEK_OF_MONTH -eq 0 ]
 
 then 
 	PREV_WEEK_OF_MONTH=4
+	MONTH_OLD_FOR_DEL=$(date --date='-1 month' +%Y-%m)
 fi
 
 
@@ -39,7 +41,7 @@ function processing_backup {
 	--exclude='/home/roman/.cache' \
 	--exclude='/home/roman/.local/share/Trash' \
 	-z --create --file $BACKUP_HOME/${MNOW}-${WEEK_OF_MONTH}_WEEK/$NOW.tar.gz \
-	--listed-incremental=$BACKUP_HOME/${MNOW}-${WEEK_OF_MONTH}_WEEK/${WEEK_OF_MONTH}_WEEK.snar \
+	--listed-incremental=$BACKUP_HOME/${MNOW}-${WEEK_OF_MONTH}_WEEK/${WEEK_OF_MONTH}st_WEEK.snar \
 	--absolute-names /home/roman 
 }
 
@@ -51,7 +53,7 @@ function create_backup_dir {
 
 function delete_old_backup_dir {
 
-	rm -rf $BACKUP_HOME/${MNOW}-${PREV_WEEK_OF_MONTH}_WEEK
+	rm -rf ${BACKUP_HOME}/${MONTH_OLD_FOR_DEL}-${PREV_WEEK_OF_MONTH}_WEEK
 }
 
 function copy_variables_file {
@@ -63,7 +65,7 @@ if [ $DAY_OF_WEEK -eq 1 ]
 then
 	if [ ! -d "$CURRENT_WEEK_DIR" ]
 	then
-		printf "Warning!!! Current dir for week backup not exist\n"
+		printf "Today is a new week!\n"
 		create_backup_dir
 	fi
 
