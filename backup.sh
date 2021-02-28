@@ -75,8 +75,6 @@ fi
 if [ ! -d "$CURRENT_WEEK_DIR" ]
 then
 	printf "Warning!!! Current dir for week backup not exist\n"
-	printf "hi from 2 block\n"
-	echo $CURRENT_WEEK_DIR
 	create_backup_dir
 fi
 	
