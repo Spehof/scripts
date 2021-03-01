@@ -12,10 +12,10 @@ WEEK_OF_MONTH=$((($(date +%-d)-1)/7+1))
 PREV_WEEK_OF_MONTH=$(((($(date +%-d)-1)/7+1)-1))
 MONTH_OLD_FOR_DEL=$MNOW
 
-CURRENT_WEEK_DIR=${BACKUP_HOME}/${MNOW}-${WEEK_OF_MONTH}_WEEK
+CURRENT_BACKUP_DIR=${BACKUP_HOME}/${MNOW}-${WEEK_OF_MONTH}_WEEK
 
 VARIABLES_FILE_SOURCE=${HOME}/.variables
-VARIABLES_FILE_DEST=${CURRENT_WEEK_DIR}/.variables
+VARIABLES_FILE_DEST=${CURRENT_BACKUP_DIR}/.variables
 
 EMAIL="volkovsws"
 
@@ -63,7 +63,7 @@ function copy_variables_file {
 
 if [ $DAY_OF_WEEK -eq 1 ] 	
 then
-	if [ ! -d "$CURRENT_WEEK_DIR" ]
+	if [ ! -d "$CURRENT_BACKUP_DIR" ]
 	then
 		printf "Today is a new week!\n"
 		create_backup_dir
@@ -74,7 +74,7 @@ then
 
 fi
 
-if [ ! -d "$CURRENT_WEEK_DIR" ]
+if [ ! -d "$CURRENT_BACKUP_DIR" ]
 then
 	printf "Warning!!! Current dir for week backup not exist\n"
 	create_backup_dir
