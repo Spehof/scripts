@@ -28,11 +28,13 @@ sudo apt-get install -y python3-pip
 pip install Pygments
 
 ## sdk man
+## https://github.com/Comcast/ansible-sdkman
 curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk version
 
 ## doker
+## https://github.com/geerlingguy/ansible-role-docker
 sudo apt-get remove docker docker-engine docker.io containerd runc
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
@@ -125,7 +127,8 @@ zsh --version
 chsh -s $(which zsh)
 echo $SHELL
 
-## sublime text
+## sublime text 
+## https://github.com/jdauphant/ansible-role-sublimetext
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 sudo apt-get install -y sublime-text
@@ -144,6 +147,10 @@ sudo apt-get install -y yamllint
 
 ## Slack
 sudo snap install slack --classic
+
+kubectl !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+tmuxinator
+mongo db
 
 # Cleanup the cache (TODO: set up a cron to do this)
 apt clean
