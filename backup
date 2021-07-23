@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BACKUP_HOME="/media/roman/CPBA_X64FRE1/backup_HOME"
+BACKUP_HOME="/home/roman/MountPoint/OldHome"
 NOW=$(date +%Y-%m-%d-%H-%M)
 MNOW=$(date +%Y-%m)
 
