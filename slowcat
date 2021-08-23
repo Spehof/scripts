@@ -1,0 +1,11 @@
+#!/bin/bash
+
+STDIN=$(cat)
+
+PRINT_TIME_SPEED=0.03
+
+for (( i=0; $i<${#STDIN}; i=$(($i+1)) ))
+do
+   echo -n "${STDIN:$i:1}";
+   sleep $PRINT_TIME_SPEED;
+done
