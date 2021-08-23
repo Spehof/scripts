@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#SlowCat
+
 STDIN=$(cat)
 
 PRINT_TIME_SPEED=0.03
