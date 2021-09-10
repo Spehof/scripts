@@ -1,23 +1,28 @@
 #!/bin/sh
 
+# This skript translate EN -> RU from STDIN
+# Using https://www.reverso.net API
+# For change languages
+
 TEXT=$(cat)
 
-generate_post_data()
-{
-cat <<EOF
-	{
-	"input":"$TEXT",
-	"from":"eng",
-	"to":"rus",
-	"format":"text",
-	"options":
-		{
-		"origin":"reversodesktop",
-		"sentenceSplitter":true,
-		"contextResults":true,
-		"languageDetection":false
+LANG_FROM=eng
+LANG_TO=rus
+
+
+generate_post_data(){
+	cat <<EOF
+		{"input":"$TEXT",
+		"from":"$LANG_FROM",
+		"to":"$LANG_TO",
+		"format":"text",
+		"options":{
+			"origin":"reversodesktop",
+			"sentenceSplitter":true,
+			"contextResults":true,
+			"languageDetection":false
+			}
 		}
-	}
 EOF
 }
 
